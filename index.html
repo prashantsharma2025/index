@@ -3,9 +3,874 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Prashant Sharma | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: blob 7s infinite;
+        }
+        
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .typing-cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #d946ef);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .skill-bar {
+            transition: width 1s ease-in-out;
+        }
+    </style>
 </head>
-<body>
-    <h1>HELLO </h1>
+<body class="bg-darker text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <a href="#home" class="text-2xl font-bold gradient-text">PS</a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white transition">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white transition">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white transition">Contact</a>
+                    <a href="#contact" class="gradient-bg px-6 py-2 rounded-full text-white font-medium hover:opacity-90 transition">Hire Me</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark/95 backdrop-blur-lg">
+            <div class="px-4 py-4 space-y-4">
+                <a href="#home" class="block text-gray-300 hover:text-white transition">Home</a>
+                <a href="#about" class="block text-gray-300 hover:text-white transition">About</a>
+                <a href="#skills" class="block text-gray-300 hover:text-white transition">Skills</a>
+                <a href="#projects" class="block text-gray-300 hover:text-white transition">Projects</a>
+                <a href="#contact" class="block text-gray-300 hover:text-white transition">Contact</a>
+                <a href="#contact" class="block gradient-bg px-6 py-2 rounded-full text-white font-medium text-center">Hire Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <!-- Animated Blobs -->
+        <div class="blob w-72 h-72 bg-primary top-20 left-10"></div>
+        <div class="blob w-96 h-96 bg-secondary bottom-20 right-10" style="animation-delay: 2s;"></div>
+        <div class="blob w-64 h-64 bg-pink-500 top-1/2 left-1/2" style="animation-delay: 4s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <p class="text-primary font-medium mb-4 text-lg">Hello, I'm</p>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+                        <span class="text-white">Prashant</span>
+                        <br>
+                        <span class="gradient-text">Sharma</span>
+                    </h1>
+                    <div class="text-xl sm:text-2xl text-gray-400 mb-8 h-8">
+                        <span id="typing-text"></span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                    <p class="text-gray-400 text-lg mb-8 max-w-lg mx-auto lg:mx-0">
+                        A passionate Full Stack Developer crafting beautiful and functional web experiences. BSc IT Graduate with 5+ successful projects delivered.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#projects" class="gradient-bg px-8 py-4 rounded-full text-white font-semibold hover:opacity-90 transition transform hover:scale-105">
+                            View My Work <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#contact" class="border-2 border-primary px-8 py-4 rounded-full text-white font-semibold hover:bg-primary/20 transition">
+                            Contact Me
+                        </a>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="flex gap-6 mt-10 justify-center lg:justify-start">
+                        <a href="#" class="w-12 h-12 rounded-full bg-dark flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/20 transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-dark flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/20 transition">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-dark flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/20 transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-dark flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/20 transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hero Image -->
+                <div class="order-1 lg:order-2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full gradient-bg p-1">
+                            <div class="w-full h-full rounded-full bg-dark flex items-center justify-center">
+                                <div class="text-8xl sm:text-9xl gradient-text font-bold">PS</div>
+                            </div>
+                        </div>
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-4 -right-4 bg-dark p-4 rounded-xl shadow-xl animate-bounce">
+                            <i class="fab fa-react text-4xl text-cyan-400"></i>
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 bg-dark p-4 rounded-xl shadow-xl animate-bounce" style="animation-delay: 0.5s;">
+                            <i class="fab fa-node-js text-4xl text-green-500"></i>
+                        </div>
+                        <div class="absolute top-1/2 -right-8 bg-dark p-4 rounded-xl shadow-xl animate-bounce" style="animation-delay: 1s;">
+                            <i class="fab fa-js text-4xl text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-gray-400 hover:text-white transition">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 lg:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-medium mb-4">Get To Know</p>
+                <h2 class="text-4xl sm:text-5xl font-bold gradient-text">About Me</h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl p-8 backdrop-blur-sm">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-dark/80 p-6 rounded-2xl text-center card-hover">
+                                <i class="fas fa-award text-4xl text-primary mb-4"></i>
+                                <h3 class="text-2xl font-bold text-white">5+</h3>
+                                <p class="text-gray-400">Projects Completed</p>
+                            </div>
+                            <div class="bg-dark/80 p-6 rounded-2xl text-center card-hover">
+                                <i class="fas fa-graduation-cap text-4xl text-secondary mb-4"></i>
+                                <h3 class="text-2xl font-bold text-white">BSc IT</h3>
+                                <p class="text-gray-400">Graduate</p>
+                            </div>
+                            <div class="bg-dark/80 p-6 rounded-2xl text-center card-hover">
+                                <i class="fas fa-code text-4xl text-pink-500 mb-4"></i>
+                                <h3 class="text-2xl font-bold text-white">10+</h3>
+                                <p class="text-gray-400">Technologies</p>
+                            </div>
+                            <div class="bg-dark/80 p-6 rounded-2xl text-center card-hover">
+                                <i class="fas fa-clock text-4xl text-cyan-400 mb-4"></i>
+                                <h3 class="text-2xl font-bold text-white">24/7</h3>
+                                <p class="text-gray-400">Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6">A Passionate Full Stack Developer Based in India</h3>
+                    <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                        I'm Prashant Sharma, a dedicated Full Stack Developer with a BSc in Information Technology. I specialize in creating modern, responsive web applications that deliver exceptional user experiences.
+                    </p>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        With over 5 successful projects under my belt, I bring a combination of technical expertise and creative problem-solving to every project. I'm passionate about clean code, intuitive design, and continuous learning.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-300">Frontend Development</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-300">Backend Development</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-300">Database Management</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-300">API Integration</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="gradient-bg px-8 py-4 rounded-full text-white font-semibold inline-flex items-center gap-2 hover:opacity-90 transition transform hover:scale-105">
+                        Let's Talk <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 lg:py-32 bg-dark/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-medium mb-4">My Expertise</p>
+                <h2 class="text-4xl sm:text-5xl font-bold gradient-text">Skills & Technologies</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend Skills -->
+                <div class="bg-dark p-8 rounded-3xl card-hover">
+                    <div class="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-6">Frontend Development</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">HTML/CSS</span>
+                                <span class="text-primary">95%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">JavaScript</span>
+                                <span class="text-primary">90%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">React.js</span>
+                                <span class="text-primary">85%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">Tailwind CSS</span>
+                                <span class="text-primary">90%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Backend Skills -->
+                <div class="bg-dark p-8 rounded-3xl card-hover">
+                    <div class="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-6">Backend Development</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">Node.js</span>
+                                <span class="text-primary">85%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">Express.js</span>
+                                <span class="text-primary">80%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">Python</span>
+                                <span class="text-primary">75%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">REST APIs</span>
+                                <span class="text-primary">90%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Database & Tools -->
+                <div class="bg-dark p-8 rounded-3xl card-hover">
+                    <div class="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-6">Database & Tools</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">MongoDB</span>
+                                <span class="text-primary">85%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">MySQL</span>
+                                <span class="text-primary">80%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">Git/GitHub</span>
+                                <span class="text-primary">90%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-400">Docker</span>
+                                <span class="text-primary">70%</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tech Icons -->
+            <div class="mt-16 flex flex-wrap justify-center gap-8">
+                <div class="w-16 h-16 bg-dark rounded-2xl flex items-center justify-center card-hover">
+                    <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                </div>
+                <div class="w-16 h-16 bg-dark rounded-2xl flex items-center justify-center card-hover">
+                    <i class="fab fa-css3-alt text-3xl text-blue-500"></i>
+                </div>
+                <div class="w-16 h-16 bg-dark rounded-2xl flex items-center justify-center card-hover">
+                    <i class="fab fa-js text-3xl text-yellow-400"></i>
+                </div>
+                <div class="w-16 h-16 bg-dark rounded-2xl flex items-center justify-center card-hover">
+                    <i class="fab fa-react text-3xl text-cyan-400"></i>
+                </div>
+                <div class="w-16 h-16 bg-dark rounded-2xl flex items-center justify-center card-hover">
+                    <i class="fab fa-node-js text-3xl text-green-500"></i>
+                </div>
+                <div class="w-16 h-16 bg-dark rounded-2xl flex items-center justify-center card-hover">
+                    <i class="fab fa-python text-3xl text-blue-400"></i>
+                </div>
+                <div class="w-16 h-16 bg-dark rounded-2xl flex items-center justify-center card-hover">
+                    <i class="fab fa-git-alt text-3xl text-orange-600"></i>
+                </div>
+                <div class="w-16 h-16 bg-dark rounded-2xl flex items-center justify-center card-hover">
+                    <i class="fab fa-docker text-3xl text-blue-500"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-medium mb-4">My Recent Work</p>
+                <h2 class="text-4xl sm:text-5xl font-bold gradient-text">Featured Projects</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-dark rounded-3xl overflow-hidden card-hover group">
+                    <div class="relative overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-6xl text-white/50"></i>
+                        </div>
+                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">E-Commerce Platform</h3>
+                        <p class="text-gray-400 mb-4">A full-featured online store with cart, payments, and admin dashboard built with MERN stack.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">React</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">Node.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-dark rounded-3xl overflow-hidden card-hover group">
+                    <div class="relative overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                            <i class="fas fa-tasks text-6xl text-white/50"></i>
+                        </div>
+                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Task Management App</h3>
+                        <p class="text-gray-400 mb-4">Collaborative task manager with real-time updates, teams, and productivity analytics.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-sm rounded-full">React</span>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-sm rounded-full">Firebase</span>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-sm rounded-full">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-dark rounded-3xl overflow-hidden card-hover group">
+                    <div class="relative overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-6xl text-white/50"></i>
+                        </div>
+                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Finance Dashboard</h3>
+                        <p class="text-gray-400 mb-4">Interactive dashboard for tracking expenses, investments, and financial goals.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 text-sm rounded-full">Next.js</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 text-sm rounded-full">Chart.js</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 text-sm rounded-full">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="bg-dark rounded-3xl overflow-hidden card-hover group">
+                    <div class="relative overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center">
+                            <i class="fas fa-comments text-6xl text-white/50"></i>
+                        </div>
+                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Real-Time Chat App</h3>
+                        <p class="text-gray-400 mb-4">Feature-rich messaging app with video calls, file sharing, and end-to-end encryption.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-pink-500/20 text-pink-400 text-sm rounded-full">Socket.io</span>
+                            <span class="px-3 py-1 bg-pink-500/20 text-pink-400 text-sm rounded-full">WebRTC</span>
+                            <span class="px-3 py-1 bg-pink-500/20 text-pink-400 text-sm rounded-full">Express</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="bg-dark rounded-3xl overflow-hidden card-hover group">
+                    <div class="relative overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+                            <i class="fas fa-utensils text-6xl text-white/50"></i>
+                        </div>
+                        <div class="absolute inset-0 bg-dark/80 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white hover:scale-110 transition">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Food Delivery App</h3>
+                        <p class="text-gray-400 mb-4">Complete food ordering platform with restaurant management and delivery tracking.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 text-sm rounded-full">React Native</span>
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 text-sm rounded-full">Node.js</span>
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 text-sm rounded-full">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- More Projects Card -->
+                <div class="bg-dark rounded-3xl overflow-hidden card-hover flex items-center justify-center min-h-[350px]">
+                    <a href="#" class="text-center p-8">
+                        <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-plus text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">View All Projects</h3>
+                        <p class="text-gray-400">Check out more of my work on GitHub</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 lg:py-32 bg-dark/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-medium mb-4">Get In Touch</p>
+                <h2 class="text-4xl sm:text-5xl font-bold gradient-text">Contact Me</h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Let's work together!</h3>
+                    <p class="text-gray-400 text-lg mb-8">
+                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center">
+                                <i class="fas fa-envelope text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Email</p>
+                                <a href="mailto:prashant@example.com" class="text-white hover:text-primary transition">prashant@example.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center">
+                                <i class="fas fa-phone text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Phone</p>
+                                <a href="tel:+919876543210" class="text-white hover:text-primary transition">+91 98765 43210</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Location</p>
+                                <p class="text-white">India</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mt-10">
+                        <p class="text-gray-400 mb-4">Follow me on</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-darker flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/20 transition">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-darker flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/20 transition">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-darker flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/20 transition">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-darker flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/20 transition">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-dark p-8 rounded-3xl">
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-400 mb-2">Name</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 bg-darker border border-gray-700 rounded-xl text-white focus:border-primary focus:outline-none transition" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 mb-2">Email</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 bg-darker border border-gray-700 rounded-xl text-white focus:border-primary focus:outline-none transition" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 mb-2">Subject</label>
+                            <input type="text" name="subject" required class="w-full px-4 py-3 bg-darker border border-gray-700 rounded-xl text-white focus:border-primary focus:outline-none transition" placeholder="Project Discussion">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 mb-2">Message</label>
+                            <textarea name="message" rows="5" required class="w-full px-4 py-3 bg-darker border border-gray-700 rounded-xl text-white focus:border-primary focus:outline-none transition resize-none" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full gradient-bg px-8 py-4 rounded-xl text-white font-semibold hover:opacity-90 transition transform hover:scale-[1.02] flex items-center justify-center gap-2">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-gray-400">© 2026 Prashant Sharma. All rights reserved.</p>
+                <div class="flex items-center gap-2 text-gray-400">
+                    <span>Made with</span>
+                    <i class="fas fa-heart text-red-500"></i>
+                    <span>in India</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full gradient-bg text-white opacity-0 invisible transition-all duration-300 hover:scale-110 z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Typing Animation
+        const typingText = document.getElementById('typing-text');
+        const texts = ['Full Stack Developer', 'BSc IT Graduate', 'Web Developer', 'Problem Solver'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeText() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+            
+            setTimeout(typeText, typeSpeed);
+        }
+        
+        typeText();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Navbar Background on Scroll
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark/95', 'backdrop-blur-lg', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-dark/95', 'backdrop-blur-lg', 'shadow-lg');
+            }
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message (in real scenario, you'd send this to a server)
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-bar');
+                    skillBars.forEach(bar => {
+                        bar.style.width = bar.style.width;
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('#skills .bg-dark').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth reveal animation on scroll
+        const revealElements = document.querySelectorAll('section');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        revealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            revealObserver.observe(el);
+        });
+    </script>
 </body>
 </html>
